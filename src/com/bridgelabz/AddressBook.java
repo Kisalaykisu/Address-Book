@@ -33,7 +33,7 @@ public class AddressBook {
                 default -> null;
             };
             if (option == 4) break;
-            System.out.println(" Enter 1 to create a new contact \n 2 to exit \n 3 to edit existing contact \n 4 to delete an existing contact");
+            System.out.println(" Enter 1 to create a new contact \n 2 edit contact \n 3 delete contact \n 4 search by city \n 5 search by person \n 6 search by state \n 7 sort by zip \n 8 to exit");
             int choice = scanner.nextInt();
             if (choice == 1) {
                 ContactInfo contact = new ContactInfo();
@@ -45,18 +45,31 @@ public class AddressBook {
                     multiAddressBook.get(key).addressBook.get(name).displayContactInfo();
                 } else System.out.println("Contact already exist duplicate not allowed");
             } else if (choice == 2) {
-                is_Running = true;
-            } else if (choice == 3) {
                 multiAddressBook.get(key).editContact();
-            } else if (choice == 4) {
+            } else if (choice == 3) {
+
                 multiAddressBook.get(key).deleteContact();
+            } else if (choice == 4) {
+                obj.searchContactBasedOnCity(multiAddressBook);
             }
+            else if (choice == 5) {
+                obj.sortContactsByPersonName(multiAddressBook);
+            }else if (choice == 6) {
+                obj.sortContactsByState(multiAddressBook);
+            }else if (choice == 7) {
+                obj.sortContactsByZip(multiAddressBook);
+
+            }else if (choice == 8) {
+                is_Running=true;
+                System.out.println("Program Execute");
+            }
+
         }
-        obj.searchContactBasedOnCity(multiAddressBook);
-        obj.sortContactsByPersonName(multiAddressBook);
-        obj.sortContactsByCity(multiAddressBook);
-        obj.sortContactsByState(multiAddressBook);
-        obj.sortContactsByZip(multiAddressBook);
+
+
+
+
+
     }
 
     /**
